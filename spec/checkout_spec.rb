@@ -1,11 +1,12 @@
-require_relative '../checkout'
+require_relative '../controllers/items'
+require_relative '../controllers/checkout'
 
 describe Checkout do
   let(:co) { Checkout.new }
-  let(:chai) { Items.new({code: "CH1", name: "Chai", price: 3.11, sale_price: nil, bogo: false, three_and_more: false, combo: true, combo_free: false}) }
-  let(:apples) { Items.new({code: "AP1", name: "Apples", price: 6.00, sale_price: 4.5, bogo: false, three_and_more: true, combo: false, combo_free: false}) }
-  let(:coffee) { Items.new({code: "CF1", name: "Coffee", price: 11.23, sale_price: nil, bogo: true, three_and_more: false, combo: false, combo_free: false}) }
-  let(:milk) { Items.new({code: "MK1", name: "Milk", price: 4.75, sale_price: nil, bogo: false, three_and_more: false, combo: true, combo_free: true}) }
+  let(:chai) { Items.new({code: "CH1", name: "Chai", price: 3.11, sale_price: nil, promo: "PAIR", pair_gift: false}) }
+  let(:apples) { Items.new({code: "AP1", name: "Apples", price: 6.00, sale_price: 4.5, promo: "BUY3", pair_gift: false}) }
+  let(:coffee) { Items.new({code: "CF1", name: "Coffee", price: 11.23, sale_price: nil, promo: "BOGO", pair_gift: false}) }
+  let(:milk) { Items.new({code: "MK1", name: "Milk", price: 4.75, sale_price: nil, promo: "PAIR", pair_gift: true}) }
 
   context "#scan" do
     it "should return correct amount" do
